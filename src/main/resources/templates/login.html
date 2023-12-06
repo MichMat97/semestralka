@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Stránka histórie výpočtovej techniky</title>
+    <link rel="icon" type="image/svg+xml" th:href="@{/img/motherboard-fill.svg}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link  th:href="@{/css/styles.css}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08"
+                aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <img class="svg" alt="favicon" th:src="@{/img/motherboard-fill.svg}" height="45">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active menu" aria-current="page" th:href="@{/index}">Úvod</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu" th:href="@{zbierka.html}">Moja zbierka</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu" th:href="@{/dokumenty}">Dokumenty</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle menu" href="#" data-bs-toggle="dropdown"
+                       aria-expanded="false">Pomoc</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/kontakt}">Kontakt</a></li>
+                        <li><a class="dropdown-item" href="#">Napíšte nám</a></li>
+                        <li><a class="dropdown-item" href="#">Kde nás nájdete</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-outline-light me-md-2" type="button">Prihlásiť</button>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Nesprávny login alebo heslo</div>
+            </div>
+            <div th:if="${param.logout}">
+                <div class="alert alert-success">Boli ste odhlásený</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Login Form</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" role="form" th:action="@{/login}" class="form-horizontal" >
+                        <div class="form-group mb-3">
+                            <label class="control-label"> Email</label>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter email address" />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="control-label"> Password</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <button type="submit" class="btn btn-primary">Prihlásiť</button>
+                            <span> Nemáte účet ?
+                                <a th:href="@{/register}">Registrovať teraz</a>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

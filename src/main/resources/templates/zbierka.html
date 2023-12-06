@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Stránka histórie výpočtovej techniky</title>
+    <link rel="icon" type="image/svg+xml" th:href="@{/img/motherboard-fill.svg}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08"
+                aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <img class="svg" alt="favicon" th:src="@{img/motherboard-fill.svg}" height="45">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu" th:href="@{index}">Úvod</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active menu" aria-current="page" th:href="@{zbierka}">Moja zbierka</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu" th:href="@{dokumenty}">Dokumenty</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle menu" href="#" data-bs-toggle="dropdown"
+                       aria-expanded="false">Pomoc</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{kontakt}">Kontakt</a></li>
+                        <li><a class="dropdown-item" href="#">Napíšte nám</a></li>
+                        <li><a class="dropdown-item" href="#">Kde nás nájdete</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-outline-light me-md-2" type="button" th:onclick="|window.location.href='/login'|">Vstup</button>
+    </div>
+</nav>
+<div>
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top zbierka-images" src="/img/tns-ram.jpg" alt="TNS-RAM">
+                        <div class="card-body">
+                            <p class="card-text">Jedna sa o kartu operacnej pamäte z pocitaca TNS SL64 s kapacitou 64KB</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-body-secondary">TNS SL64</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top zbierka-images" src="img/tns-cpu.jpg" alt="TNS-CPU">
+                        <div class="card-body">
+                            <p class="card-text">Procesorova karta z pocitaca TNS SL64 osadena procesorom UB880D ktory bol klonom znameho Zilog Z80</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-body-secondary">TNS SL-64</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top zbierka-images" src="img/tns-int.jpg" alt="TNS-INT-D*B">
+                        <div class="card-body">
+                            <p class="card-text">Karta TNS-INT-D*B je karta preruseni systemu a zavadzac karty FDC III</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-body-secondary">TNS SL-64</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top zbierka-images" src="img/cpu.jpg" alt="CPU">
+                        <div class="card-body">
+                            <p class="card-text">Medzi najpoužívanejšie 8-bitové procesory sa radili MHB8080A a UB880D</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-body-secondary">CPU</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top zbierka-images" src="img/diernystitok.jpg" alt="Dierny štítok">
+                        <div class="card-body">
+                            <p class="card-text">Dierne štítky boli jedným zo spôsobov ako uchovávať dáta. Boli pomerne rozšírené, no neboli veľmi spoľahlivé. Na fotografii je zobrazený štítok s vydierovaným vzorom znakov</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-body-secondary">Pamäťové médiá</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top zbierka-images" src="img/diernystitok1.jpg" alt="Dierny štítok">
+                        <div class="card-body">
+                            <p class="card-text">Jedným z praktických použítí diernych štítkov bola evidencia kníh.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-body-secondary">Pamäťové médiá</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top zbierka-images" src="img/pmi.jpg" alt="PMI-80">
+                        <div class="card-body">
+                            <p class="card-text">Piešťanský mikropočítač PMI-80 bol jedným zo školských jednodoskových mikropočítačov určených na výuku mikroprocesorovej techiniky a programovania</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-body-secondary">PMI-80</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top zbierka-images" src="img/magnestitok.jpg" alt="Magnetický štítok">
+                        <div class="card-body">
+                            <p class="card-text">Magnetické štítky boli pokusom zvýšiť nízku kapacitu a ťivotnosť dovtedz používaných diernych štítkov vzrobených z papiera</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-body-secondary">Pamäťové médiá</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top zbierka-images" src="img/eprom.jpg" alt="EPROM">
+                        <div class="card-body">
+                            <p class="card-text">Bez použítia pamäte by nebolo možné používať mikropočítače na zložitejšie výpočty a činnosti. Preto sa na rozšírenie dostupnej pamäte používali napríklad programovateľné NMOS pamäte MHB8708C ktoré boli mazateľné UV svetlom</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-body-secondary">EPROM</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
