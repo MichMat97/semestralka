@@ -84,7 +84,23 @@ public class UserServiceImpl implements UserService {
             // Ulož zmeny do databázy
             userRepository.updateUser(id, name, email, password);
         } else {
-            throw new EntityNotFoundException("User not found with ID: " + email);
+            throw new EntityNotFoundException("User not found with email: " + email);
+        }
+    }
+
+    @Transactional
+    @Override
+    public void deleteUser(String email) {
+        // Získaj existujúceho používateľa z databázy na základe jeho emailu
+        User existingUser = userRepository.findByEmail(email);
+
+        // Ak používateľ existuje, aktualizuj jeho informácie
+        if (existingUser != null) {
+            // Aktualizuj informácie o používateľovi
+            // Ulož zmeny do databázy
+            userRepository.deleteUser(existingUser.getEmail());
+        } else {
+            throw new EntityNotFoundException("User not found with email: " + email);
         }
     }
 }

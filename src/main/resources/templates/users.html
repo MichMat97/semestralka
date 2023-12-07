@@ -72,7 +72,7 @@
             <td th:text = "${user.lastName}"></td>
             <td th:text = "${user.email}"></td>
             <td><button class="btn btn-outline-warning me-md-2" type="button" th:attr="onclick='editUserScr(\'' + ${user.email} + '\')'">Uprav</button></td>
-            <td><button class="btn btn-outline-danger me-md-2" type="button" th:onclick="|window.location.href='/logout'|">Zmaž</button> </td>
+            <td><button class="btn btn-outline-danger me-md-2" type="button" th:attr="onclick='deleteUserScr(\'' + ${user.email} + '\')'">Zmaž</button> </td>
         </tr>
         </tbody>
     </table>

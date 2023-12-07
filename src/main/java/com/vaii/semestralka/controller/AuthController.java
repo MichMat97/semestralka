@@ -85,6 +85,17 @@ public class AuthController {
         return "users";
     }
 
+    @GetMapping("/deleteUser")
+    public String deleteUser(@RequestParam String email, Model model) {
+        User existingUser = userService.findUserByEmail(email);
+        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
+            // Aktualizovať informácie o používateľovi v databáze
+            userService.deleteUser(existingUser.getEmail());
+        }
+        // Presmerovať na inú stránku po úprave
+        return "users";
+    }
+
 
     // handler method to handle list of users
     @GetMapping("/users")
