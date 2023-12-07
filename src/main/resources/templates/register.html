@@ -26,7 +26,7 @@
                     <img class="svg" alt="favicon" th:src="@{/img/motherboard-fill.svg}" height="45">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active menu" aria-current="page" href="#uvodnik">Úvod</a>
+                    <a class="nav-link menu" aria-current="page" href="#uvodnik">Úvod</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu" th:href="@{zbierka}">Moja zbierka</a>
@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-outline-light me-md-2" type="button" th:href="@{/register}">Vstup</button>
+        <button class="btn btn-outline-light me-md-2" type="button" th:onclick="|window.location.href='/login'|">Prihlásiť</button>
     </div>
 </nav>
 <div class="container">

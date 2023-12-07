@@ -10,7 +10,7 @@
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <img class="svg" alt="favicon" th:src="@{img/motherboard-fill.svg}" height="45">
+                    <img class="svg" alt="favicon" th:src="@{/img/motherboard-fill.svg}" height="45">
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu" th:href="@{index}">Úvod</a>
@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-outline-light me-md-2" type="button" th:onclick="|window.location.href='/login'|">Vstup</button>
+        <button class="btn btn-outline-light me-md-2" type="button" th:onclick="|window.location.href='/login'|">Prihlásiť</button>
     </div>
 </nav>
 <div>

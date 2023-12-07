@@ -4,6 +4,8 @@ import com.vaii.semestralka.entity.Role;
 import com.vaii.semestralka.entity.User;
 import com.vaii.semestralka.reposiroty.RoleRepository;
 import com.vaii.semestralka.reposiroty.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -68,5 +70,21 @@ public class UserServiceImpl implements UserService {
         Role role = new Role();
         role.setName("ROLE_ADMIN");
         return roleRepository.save(role);
+    }
+
+    @Transactional
+    @Override
+    public void updateUser(Long id, String name, String email, String password) {
+        // Získaj existujúceho používateľa z databázy na základe jeho emailu
+        User existingUser = userRepository.findByEmail(email);
+
+        // Ak používateľ existuje, aktualizuj jeho informácie
+        if (existingUser != null) {
+            // Aktualizuj informácie o používateľovi
+            // Ulož zmeny do databázy
+            userRepository.updateUser(id, name, email, password);
+        } else {
+            throw new EntityNotFoundException("User not found with ID: " + email);
+        }
     }
 }

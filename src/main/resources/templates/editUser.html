@@ -2,7 +2,7 @@
 <html lang="sk" xmlns:th="http://www.thymeleaf.org/">
 <head>
   <meta charset="UTF-8">
-  <title>Stránka histórie výpočtovej techniky</title>
+  <title>Registrácia</title>
   <link rel="icon" type="image/svg+xml" th:href="@{/img/motherboard-fill.svg}"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -11,6 +11,7 @@
           crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+  <script type="text/javascript" th:src="@{/JavaSctipt/editUserRedirect.js}"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
@@ -26,13 +27,13 @@
           <img class="svg" alt="favicon" th:src="@{/img/motherboard-fill.svg}" height="45">
         </li>
         <li class="nav-item">
-          <a class="nav-link menu" th:href="@{/}">Úvod</a>
+          <a class="nav-link menu" aria-current="page" href="#uvodnik">Úvod</a>
         </li>
         <li class="nav-item">
           <a class="nav-link menu" th:href="@{zbierka}">Moja zbierka</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active menu" aria-current="page" th:href="@{dokumenty}">Dokumenty</a>
+          <a class="nav-link menu" th:href="@{dokumenty}">Dokumenty</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle menu" href="#" data-bs-toggle="dropdown"
@@ -44,49 +45,55 @@
           </ul>
         </li>
       </ul>
+
     </div>
   </div>
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <button class="btn btn-outline-light me-md-2" type="button" th:onclick="|window.location.href='/login'|">Prihlásiť</button>
   </div>
 </nav>
-<h1>Zoznam odkazov na užitočné dokumenty</h1>
-<table class="dokumenty">
-  <tr>
-    <th>Krátkz názov</th>
-    <th>Popis</th>
-    <th>Link</th>
-  </tr>
-  <tr>
-    <td>Kompjutry</td>
-    <td>stránka s fotografiami a stručným info o domácich aj zahraničných mikropočítačoch</td>
-    <td><a href="http://www.kompjutry.cz/">www.kompjutry.cz</a></td>
-  </tr>
-  <tr>
-    <td>Tesla katalog</td>
-    <td>digitalizovaný katalóg súčiastok tesla</td>
-    <td><a href="https://teslakatalog.cz/">www.teslakatalog.cz</a></td>
-  </tr>
-  <tr>
-    <td>Výstava na SAV</td>
-    <td>Múzeum počítačov vo výpočtovom stredisku na SAV</td>
-    <td><a href="http://www.vystava.sav.sk/">www.vystava.sav.sk</a></td>
-  </tr>
-  <tr>
-    <td>Borik.net</td>
-    <td>stránka s emulátorokm PMD-85 a mnohým ďalším</td>
-    <td><a href="https://pmd85.borik.net/wiki/Intro">www.pmd85.borik.net</a></td>
-  </tr>
-  <tr>
-    <td>Schotek</td>
-    <td>stránka venovaná mikropočítaču PMD-85</td>
-    <td><a href="http://www.schotek.cz/pmd/index.htm">www.schotek.cz</a></td>
-  </tr>
-  <tr>
-    <td>SAPI</td>
-    <td>stránka s množstvom schém a základnými informáciami o 8-bitových počítačoch</td>
-    <td><a href="http://www.sapi.cz/index.php">www.sapi.cz</a></td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="text-center">Editácia používateľa</h2>
+      </div>
+      <div th:if="${param.success}">
+        <div class="alert alert-info">
+          Používateľ bol úspešne zmenený
+        </div>
+      </div>
+      <div class="card-body">
+        <form method="post" role="form" th:action="@{/editUser}" th:object="${user}">
+          <div class="form-group mb-3">
+            <label class="form-label">Meno</label>
+            <input class="form-control" id="firstName" name="firstName" placeholder="Zadaj meno" th:value="${user.getName().split(' ')[0]}" type="text"/>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Priezvisko</label>
+            <input class="form-control" id="lastName" name="lastName" placeholder="Zadaj priezvisko" th:value="${user.getName().split(' ')[1]}" type="text"/>
+
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" id="email" name="email" placeholder="Zadaj e-mail" th:value="${user.getEmail()}" type="email"/>
+            <p th:errors="${user.getEmail()}" class="text-danger" th:if="${#fields.hasErrors('email')}"></p>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Heslo</label>
+            <input class="form-control" id="password" name="password" placeholder="Zadaj heslo" th:value="${user.getPassword()}" type="password"/>
+            <p th:errors="${user.getPassword()}" class="text-danger" th:if="${#fields.hasErrors('password')}"></p>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">Uložiť</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

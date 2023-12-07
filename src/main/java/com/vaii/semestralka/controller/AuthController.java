@@ -7,10 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,19 +24,6 @@ public class AuthController {
     @GetMapping("/index")
     public String home(){
         return "index";
-    }
-
-    @GetMapping("/zbierka")
-    public String zbierka() {
-        return "zbierka";
-    }
-    @GetMapping("/kontakt")
-    public String kontakt() {
-        return "kontakt";
-    }
-    @GetMapping("/dokumenty")
-    public String dokumenty() {
-        return "dokumenty";
     }
 
     // handler method to handle login request
@@ -77,6 +61,30 @@ public class AuthController {
         userService.saveUser(userDto);
         return "redirect:/register?success";
     }
+
+    @GetMapping("/editUser")
+    public String showEditForm(@RequestParam String email, Model model) {
+        // Načítať informácie o používateľovi z databázy podľa userId
+        User user = userService.findUserByEmail(email);
+
+        // Pridať používateľa do modelu
+        model.addAttribute("user", user);
+
+        // Navigovať na stránku s formulárom na úpravu
+        return "editUser";
+    }
+
+    @PostMapping("/editUser")
+    public String editUser(@Valid @ModelAttribute("user") UserDto userDto){
+        User existingUser = userService.findUserByEmail(userDto.getEmail());
+        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
+            // Aktualizovať informácie o používateľovi v databáze
+            userService.updateUser(existingUser.getId(), userDto.getFirstName()+" "+userDto.getLastName(), userDto.getEmail(), userDto.getPassword());
+        }
+        // Presmerovať na inú stránku po úprave
+        return "users";
+    }
+
 
     // handler method to handle list of users
     @GetMapping("/users")

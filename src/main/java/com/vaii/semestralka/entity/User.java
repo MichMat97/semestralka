@@ -6,7 +6,6 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -16,10 +15,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @Data
 public class User {
-
-//    @Id
-//    @GeneratedValue(strategy= GenerationType.UUID)
-//    private UUID id;
 
     private static final long serialVersionUID = 1L;
 

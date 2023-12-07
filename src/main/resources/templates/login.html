@@ -10,7 +10,7 @@
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link  th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
@@ -26,19 +26,19 @@
                     <img class="svg" alt="favicon" th:src="@{/img/motherboard-fill.svg}" height="45">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active menu" aria-current="page" th:href="@{/index}">Úvod</a>
+                    <a class="nav-link menu" aria-current="page" th:href="@{index}">Úvod</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu" th:href="@{zbierka.html}">Moja zbierka</a>
+                    <a class="nav-link menu" th:href="@{zbierka}">Moja zbierka</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu" th:href="@{/dokumenty}">Dokumenty</a>
+                    <a class="nav-link menu" th:href="@{dokumenty}">Dokumenty</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle menu" href="#" data-bs-toggle="dropdown"
                        aria-expanded="false">Pomoc</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/kontakt}">Kontakt</a></li>
+                        <li><a class="dropdown-item" th:href="@{kontakt}">Kontakt</a></li>
                         <li><a class="dropdown-item" href="#">Napíšte nám</a></li>
                         <li><a class="dropdown-item" href="#">Kde nás nájdete</a></li>
                     </ul>
