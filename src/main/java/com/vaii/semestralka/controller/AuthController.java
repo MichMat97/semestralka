@@ -51,6 +51,15 @@ public class AuthController {
         if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
             result.rejectValue("email", null,
                     "There is already an account registered with the same email");
+        } else if (userDto.getFirstName().isEmpty() || userDto.getFirstName() == null) {
+            result.rejectValue("firstName", null,
+                    "Meno musí vyť vyplnené");
+        } else if (userDto.getLastName().isEmpty() || userDto.getLastName() == null) {
+            result.rejectValue("lastName", null,
+                    "Priezvisko musí vyť vyplnené");
+        } else if (userDto.getPassword().isEmpty() || userDto.getPassword() == null) {
+            result.rejectValue("password", null,
+                    "Heslo musí vyť vyplnené");
         }
 
         if(result.hasErrors()){

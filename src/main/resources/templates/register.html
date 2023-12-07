@@ -11,6 +11,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <script type="text/javascript" th:src="@{/JavaSctipt/additionalRegistrationFormValidation.js}"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
@@ -63,66 +64,29 @@
                 </div>
             </div>
             <div class="card-body">
-                <form
-                        method="post"
-                        role="form"
-                        th:action="@{/register/save}"
-                        th:object="${user}"
-                >
+                <form method="post" role="form" onsubmit="return validation()" th:action="@{/register/save}" th:object="${user}" >
                     <div class="form-group mb-3">
                         <label class="form-label">Meno</label>
-                        <input
-                                class="form-control"
-                                id="firstName"
-                                name="firstName"
-                                placeholder="Zadaj meno"
-                                th:field="*{firstName}"
-                                type="text"
-                        />
-                        <p th:errors="*{firstName}" class="text-danger"
-                           th:if="${#fields.hasErrors('firstName')}"></p>
+                        <input class="form-control" id="firstName" th:required="String" required name="firstName" placeholder="Zadaj meno" th:field="*{firstName}" type="text"/>
+                        <p th:errors="*{firstName}" class="text-danger" th:if="${#fields.hasErrors('firstName')}"></p>
                     </div>
 
                     <div class="form-group mb-3">
                         <label class="form-label">Priezvisko</label>
-                        <input
-                                class="form-control"
-                                id="lastName"
-                                name="lastName"
-                                placeholder="Zadaj priezvisko"
-                                th:field="*{lastName}"
-                                type="text"
-                        />
-                        <p th:errors="*{lastName}" class="text-danger"
-                           th:if="${#fields.hasErrors('lastName')}"></p>
+                        <input class="form-control" id="lastName" th:required="String" required name="lastName" placeholder="Zadaj priezvisko" th:field="*{lastName}" type="text"/>
+                        <p th:errors="*{lastName}" class="text-danger" th:if="${#fields.hasErrors('lastName')}"></p>
                     </div>
 
                     <div class="form-group mb-3">
                         <label class="form-label">Email</label>
-                        <input
-                                class="form-control"
-                                id="email"
-                                name="email"
-                                placeholder="Zadaj e-mail"
-                                th:field="*{email}"
-                                type="email"
-                        />
-                        <p th:errors="*{email}" class="text-danger"
-                           th:if="${#fields.hasErrors('email')}"></p>
+                        <input class="form-control" id="email" th:required="String" required name="email" placeholder="Zadaj e-mail" th:field="*{email}" type="email"/>
+                        <p th:errors="*{email}" class="text-danger" th:if="${#fields.hasErrors('email')}"></p>
                     </div>
 
                     <div class="form-group mb-3">
                         <label class="form-label">Heslo</label>
-                        <input
-                                class="form-control"
-                                id="password"
-                                name="password"
-                                placeholder="Zadaj heslo"
-                                th:field="*{password}"
-                                type="password"
-                        />
-                        <p th:errors="*{password}" class="text-danger"
-                           th:if="${#fields.hasErrors('password')}"></p>
+                        <input class="form-control" id="password" th:required="String" required name="password" placeholder="Zadaj heslo" th:field="*{password}" type="password"/>
+                        <p th:errors="*{password}" class="text-danger" th:if="${#fields.hasErrors('password')}"></p>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Registrovať</button>
